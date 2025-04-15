@@ -3,9 +3,9 @@ A RShiny-based dashboard for monitoring, analyzing the data from xxx
 
 ## 🚀 Features
 
-- 🚰 View and impute CovN2, RSV, FluA, and FluB trend data
-- 🦠 View and impute Mpox trend data
-- 🆕 View the 2 most recent measures from any wastewater site
+- 🚰 View xxxx
+- 🦠 View xxxx
+- 🆕 View xxxxx
 - ⚠️ View recorded measures with unusually large jumps in values 
 
 ## 🏗️ Architecture
@@ -26,10 +26,5 @@ wastewater-trends-streamlit/
 ## 🛠️ Installation
 
 ```bash
-git clone https://github.com/PHACDataHub/wastewater-trends-streamlit.git
-cd wastewater-trends-streamlit
-python -m venv .venv
-source .venv/bin/activate # If on Linux
-.venv\Scripts\activate # If on Windows
-pip install -r requirements.txt
+xxxxx
 ```
