@@ -11,7 +11,7 @@ A RShiny-based dashboard for monitoring, analyzing the data from xxx
 ## 🏗️ Architecture
 
 ```
-wastewater-trends-streamlit/
+CTC-Shiny-App/
 ├── app.py                    # Main application entry
 ├── views/                    # Page components
 │   ├── large-jumps.py        # Handles the "Large Jumps" page
