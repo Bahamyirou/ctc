@@ -4,8 +4,10 @@ library(ggplot2)
 library(readxl)
 library(tidyverse)
 
+load("datactc.RData")
+
 ui <- dashboardPage(
-  
+ 
   # A header
   dashboardHeader(title = "My Dashboard"),
   
@@ -23,6 +25,7 @@ ui <- dashboardPage(
   
   ##  # A body 
   dashboardBody(
+    
     # This Items help to create different table or page inside the applcation
     tabItems(
       
@@ -165,6 +168,8 @@ ui <- dashboardPage(
 
 server <- function(input, output) {
   
+
+  
   # first data input
   set.seed(122)
   histdata <- rnorm(500)
@@ -178,7 +183,11 @@ server <- function(input, output) {
   # ctc input (All data)
   
   #data <- read_excel('Membres.xlsx')
-  sub <- read.csv('sub.csv')
+  #sub <- read.csv('sub.csv')
+  #Load the data files
+ 
+  
+  
            output$plot2 <- renderPlot({
                                             ggplot(data = sub, aes(x = MembreProvince, fill = MembreStatut)) +
                                              geom_bar(position = "dodge")
@@ -195,8 +204,10 @@ server <- function(input, output) {
                                         })
   
   # section qui tient compte du Nb membres actifs
-  datAdhesion <- read.csv('datAdhesion.csv')
-  datAdhesion$AdhésionDébut <- as.Date(datAdhesion$AdhésionDébut)
+             
+             #datAdhesion <- read.csv('datAdhesion.csv');  datAdhesion$AdhésionDébut <- as.Date(datAdhesion$AdhésionDébut)
+  
+            
   output$plot4 <- renderPlot({
     
                              #Create the data (filter data based on the select date range that user will chose)
