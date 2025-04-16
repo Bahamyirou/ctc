@@ -1,7 +1,8 @@
 ## app.R ##
 library(shinydashboard)
 library(ggplot2)
-
+library(readxl)
+library(tidyverse)
 
 ui <- dashboardPage(
   
@@ -176,8 +177,8 @@ server <- function(input, output) {
   
   # ctc input (All data)
   
-  data <- read_excel('C:/ctc/Membres.xlsx')
-  
+  #data <- read_excel('Membres.xlsx')
+  sub <- read.csv('sub.csv')
            output$plot2 <- renderPlot({
                                             ggplot(data = sub, aes(x = MembreProvince, fill = MembreStatut)) +
                                              geom_bar(position = "dodge")
@@ -186,7 +187,7 @@ server <- function(input, output) {
   
   # ctc input (df contains the frequency of observations based on section)
   
-  df <- read_csv('C:/ctc/df.csv')
+           #df <- read.csv('df.csv')
   
              output$plot3 <- renderPlot({
                                           sub %>% ggplot(aes(x = section)) +
@@ -194,7 +195,8 @@ server <- function(input, output) {
                                         })
   
   # section qui tient compte du Nb membres actifs
-  datAdhesion <- read_csv('C:/ctc/datAdhesion.csv')
+  datAdhesion <- read.csv('datAdhesion.csv')
+  datAdhesion$AdhésionDébut <- as.Date(datAdhesion$AdhésionDébut)
   output$plot4 <- renderPlot({
     
                              #Create the data (filter data based on the select date range that user will chose)
