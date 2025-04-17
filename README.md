@@ -1,4 +1,5 @@
 # Shiny app for CTC
+# <img src="img/logo2.png" align="right" alt="" width="180"/> Open Data Model (ODM) for Wastewater-Based Surveillance
 A RShiny-based dashboard for monitoring, analyzing the data from xxx
 
 ## 🚀 Features
