@@ -1,4 +1,7 @@
 # Shiny app for CTC
+
+# <img src="img/logo4.jpg" align="right" alt="" width="200"/> 
+
 A RShiny-based dashboard for monitoring, analyzing the data from xxx
 
 ## 🚀 Features
@@ -23,7 +26,7 @@ CTC-Shiny-App/
 └── requirements.txt          # Dependencies
 ```
 
-## 🛠️ Installation
+## 🛠️ Where it is published
 
 ```bash
 xxxxx
