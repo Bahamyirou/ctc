@@ -26,7 +26,7 @@ CTC-Shiny-App/
 └── requirements.txt          # Dependencies
 ```
 
-## 🛠️ Installation
+## 🛠️ Where it is published
 
 ```bash
 xxxxx
