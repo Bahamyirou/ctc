@@ -1,5 +1,5 @@
 # Shiny app for CTC
-# <img src="img/logo2.png" align="right" alt="" width="180"/> 
+# <img src="img/logo2.png" align="center" alt="" width="180"/> 
 A RShiny-based dashboard for monitoring, analyzing the data from xxx
 
 ## 🚀 Features
