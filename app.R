@@ -162,10 +162,10 @@ ui <- dashboardPage(
             # Date range slider (THE OUTPUT WILL be call dat - this will contain each min/max that user will chose and use below in servser side for filtration)
             dateRangeInput(inputId = "DateRangeSelected",
                            label = t("Selectionner un intervalle de temps"),
-                           start = min(datAdhesion$AdhésionDébut, na.rm = TRUE),
-                           end =   max(datAdhesion$AdhésionDébut, na.rm = TRUE),
-                           min =   min(datAdhesion$AdhésionDébut, na.rm = TRUE),
-                           max =   max(datAdhesion$AdhésionDébut, na.rm = TRUE),
+                           start = min(TrendAdhesion$AdhésionDébut, na.rm = TRUE),
+                           end =   max(TrendAdhesion$AdhésionDébut, na.rm = TRUE),
+                           min =   min(TrendAdhesion$AdhésionDébut, na.rm = TRUE),
+                           max =   max(TrendAdhesion$AdhésionDébut, na.rm = TRUE),
                            separator = t("à"))
             
           )# column
