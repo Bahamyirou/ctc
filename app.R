@@ -1,3 +1,8 @@
+##############################################################################################
+##############################################################################################
+######################## April 2025 - Asma BAHAMYIROU, PHD ##################################
+##############################################################################################
+
 ## app.R ##
 library(shinydashboard)
 library(ggplot2)
@@ -8,7 +13,8 @@ library(shinyWidgets)
 ## Load the data
 load("datactc1.RData")
 
-##
+####  BEGINING OF THE SHINY 
+
 ui <- dashboardPage(
  
   # A header
@@ -120,13 +126,16 @@ ui <- dashboardPage(
                              #infoBox("New Orders", 10 * 2, icon = icon("credit-card"), fill = TRUE),
                              #infoBoxOutput("progressBox"),
                              #infoBoxOutput("approvalBox2")
-                             valueBox(10 * 2, "New Orders", icon = icon("credit-card")),
+                             # valueBox(10 * 2, "Membres Actifs", width = 3,color = "green",icon = icon("fa-solid fa-signal-bars")),
+                          
                              # Dynamic valueBoxes
-                             valueBoxOutput("progressBox"),
-                             valueBoxOutput("approvalBox")
+                             valueBoxOutput("progressBox", width = 4),
+                             valueBoxOutput("approvalBox", width = 4),
+                             valueBox(4885, "Population Canadienne ayant Togo comme lieu de naisance (Statistique Canada) ", width = 4,color = "yellow",,icon = icon("glist-alt"))
                        ),
         
-                  p("Le tableau de bord a été mis à jour pour la dernière fois le xxx.")
+                  p("Le tableau de bord a été mis à jour pour la dernière fois le xxx. "),
+               a(href = "https://www12.statcan.gc.ca/census-recensement/2021/dp-pd/dv-vd/imm/index-fr.cfm", "Statistique Canada, Recensement de la population, 2021.")
         
         
          ),
@@ -260,22 +269,16 @@ server <- function(input, output) {
   #progressBox
   output$progressBox <- renderValueBox({
     valueBox(
-      paste0(25 + input$count, "%"), "Progress", icon = icon("list"),
+      as.numeric(table(sub$MembreStatut)[1]),  "Membres Actifs", icon = icon("list"),
       color = "purple"
     )
   })
   
   
-  #approvalBox2
-  output$approvalBox2 <- renderInfoBox({
-    infoBox(
-      "Approval", "80%", icon = icon("thumbs-up", lib = "glyphicon"),
-      color = "yellow"
-    )
-  })
+
   output$approvalBox <- renderInfoBox({
-    infoBox(
-      "Actif",paste0(as.numeric(table(sub$MembreStatut)[1]), "%"), icon = icon("thumbs-up", lib = "glyphicon"),
+    valueBox(
+      "Actifs",paste0(round(as.numeric(table(sub$MembreStatut)[1])*100/4885, digits = 2), "%"), icon = icon("list"),
       color = "yellow"
     )
   })
