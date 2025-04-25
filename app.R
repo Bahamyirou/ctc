@@ -16,186 +16,177 @@ load("datactc1.RData")
 ####  BEGINING OF THE SHINY 
 
 ui <- dashboardPage(
- 
-  # A header
-  dashboardHeader(title = "StatCTC"),
   
-  # A sidebar
-  dashboardSidebar(
-    
-    sidebarMenu(
-      menuItem("À propos", tabName = "widgets", icon = icon("file-lines")), # 2nd tab
-      menuItem("La CTC", tabName = "dashboard", icon = icon("chart-line")), # first tab
-      menuItem("Les sections", tabName = "dashboardsection", icon = icon("chart-line")), # first tab
-      menuItem("Les sections 2", tabName = "test_FILTRE", icon = icon("chart-line")) # first tab
-    )
-    
-  ),
   
-  ##  # A body 
-  dashboardBody(
+        skin = "green",  #color themes
+      
+        # A header
+        dashboardHeader(title = "StatCTC"),
+  
+          # A sidebar
+         dashboardSidebar(
     
-    # This Items help to create different table or page inside the applcation
-    tabItems(
+                     sidebarMenu(
+                                      menuItem("À propos", tabName = "widgets", icon = icon("file-lines")), # 2nd tab
+                                      menuItem("La CTC", tabName = "dashboard", icon = icon("chart-line")), # first tab
+                                      menuItem("Les sections", tabName = "dashboardsection", icon = icon("chart-line")), # first tab
+                                      menuItem("Les sections 2", tabName = "test_FILTRE", icon = icon("chart-line")) # first tab
+                                 )
+    
+                          ),
+  
+       ### A body 
+        dashboardBody(
+    
+                       #This Items help to create different table or page inside the applcation
+                        tabItems(
       
       
-      # First tab or page content
-      tabItem(tabName = "dashboard",
+                          # First tab or page content
+                              tabItem(tabName = "dashboard",
               
-              fluidRow(
+                                         fluidRow(
                 
-                         #box1
-                         box(plotOutput("plot1", height = 250)),
+                                                #box1
+                                                box(plotOutput("plot1", height = 250),width = 4),
                 
-                         #box4
-                         box(plotOutput("plot2", height = 250)) ,
+                                                #box2
+                                                box(plotOutput("plot2", height = 250),width = 4) ,
                 
-                         #box4
-                          box(plotOutput("plot3", height = 250)) ,
+                                                #box3
+                                                box(plotOutput("plot3", height = 250),width = 4) ,
                 
-                         #box2
-                         box(
-                              title = "Controls",
-                              sliderInput("slider", "Number of observations:", 1, 100, 50)
-                           ),
+                                                #box4
+                                                box(
+                                                     title = "Controls",
+                                                     sliderInput("slider", "Number of observations:", 1, 100, 50)
+                                                    ),
                 
-                         #box3
-                         box(
-                              title = "xxx",
-                              sliderInput("slider", "Number of observations:", 1, 100, 50)
-                            )
+                                                #box5
+                                                box(
+                                                     title = "xxx",
+                                                     sliderInput("slider", "Number of observations:", 1, 100, 50)
+                                                   )
                 
                 
-                  ),
+                                             ),
               
-              # infoBoxes with fill=TRUE
-              fluidRow(
-                         infoBox("New Orders", 10 * 2, icon = icon("credit-card"), fill = TRUE),
-                        infoBoxOutput("progressBox"),
-                        infoBoxOutput("approvalBox2")
-                      )
-           ),
+                                        # This section display the 3 statistics in About page
+                                        fluidRow(
+                                             infoBox("New Orders", 10 * 2, icon = icon("credit-card"), fill = TRUE),
+                                             infoBoxOutput("progressBox"),
+                                             infoBoxOutput("approvalBox2")
+                                            )
+                                    ),
       
       
-      # Second tab or page content
+                       # Second tab or page content
       
-      tabItem(
+                             tabItem(
         
-                   tabName = "widgets",
+                                         tabName = "widgets",
         
-                   h1("Communauté Togolaise Au Canada (CTC)"),
+                                         h1("Communauté Togolaise Au Canada (CTC)"),
         
         
-                  h2("La CTC est un organisme à  but non lucratif qui représente les Togolais vivant au Canada. Depuis 32 ans, 
-                      notre mission est de favoriser la solidarité entre la diaspora togolaise, de promouvoir la culture togolaise 
-                       et d’intervenir sur les questions cruciales concernant notre pays d’origine, le Togo."),
+                                         h2("La CTC est un organisme à  but non lucratif qui représente les Togolais vivant au Canada. Depuis 32 ans, 
+                                             notre mission est de favoriser la solidarité entre la diaspora togolaise, de promouvoir la culture togolaise 
+                                             et d’intervenir sur les questions cruciales concernant notre pays d’origine, le Togo."),
                   
-                 h2("Ce tableau de bord fournit des statistiques sur les membres de la CTC, permet de visualiser la tendance 
-                    des adhésions dans le temps et comprendre la composition de notre communauté afin de mieux la servir."),
+                                         h2("Ce tableau de bord fournit des statistiques sur les membres de la CTC, permet de visualiser la tendance 
+                                            des adhésions dans le temps et comprendre la composition de notre communauté afin de mieux la servir."),
         
       
         
-                  p(tags$ul(        tags$li(tags$b(t("NOTRE MISSION:")),t("Servir la communauté togolaise au Canada tout en promouvant l’intégration et l’échange de richesses culturelles.")),
-                                   tags$li(tags$b(t("NOTRE VISION:")),t("Contribuer au bien-être des personnes originaires du Togo au Canada et à l’essor socio-économique du Canada.")),
-                                  tags$li(tags$b(t("NOS VALEURS:")),t("Service, Respect et intégrité, Excellence, Équité")),
-                                 style = "font-size:18px;")
-                           ),
+                                         p(tags$ul(  tags$li(tags$b(t("NOTRE MISSION:")),t("Servir la communauté togolaise au Canada tout en promouvant l’intégration et l’échange de richesses culturelles.")),
+                                                     tags$li(tags$b(t("NOTRE VISION:")),t("Contribuer au bien-être des personnes originaires du Togo au Canada et à l’essor socio-économique du Canada.")),
+                                                     tags$li(tags$b(t("NOS VALEURS:")),t("Service, Respect et intégrité, Excellence, Équité")),
+                                                     style = "font-size:18px;"
+                                                    )
+                                            ),
        
         
+      
         
         
-        # fluidRow(
-        #   box(
-        #    title = "NOTRE MISSION", width = 4, background = "yellow",
-        #    "Servir la communauté togolaise au Canada tout en promouvant l’intégration et l’échange de richesses culturelles."
-        # ),
-        # box(
-        #   title = "NOTRE VISION", width = 4, background = "red",
-        #   "Contribuer au bien-être des personnes originaires du Togo au Canada et à l’essor socio-économique du Canada."
-        # ),
-        # box(
-        #   title = "NOS VALEURS",width = 4, background = "green",
-        #   "Service, Respect et intégrité, Excellence, Équité"
-        # )
-        #  ),
+                                         #This is where The statistics are derived for About PAGE
         
-        
-            # infoBoxes with fill=TRUE
-        
-             fluidRow(
-                             #infoBox("New Orders", 10 * 2, icon = icon("credit-card"), fill = TRUE),
-                             #infoBoxOutput("progressBox"),
-                             #infoBoxOutput("approvalBox2")
-                             # valueBox(10 * 2, "Membres Actifs", width = 3,color = "green",icon = icon("fa-solid fa-signal-bars")),
+                                         fluidRow(
+                                                       #infoBox("New Orders", 10 * 2, icon = icon("credit-card"), fill = TRUE),
+                                                       #infoBoxOutput("progressBox"),
+                                                       #infoBoxOutput("approvalBox2")
+                                                       # valueBox(10 * 2, "Membres Actifs", width = 3,color = "green",icon = icon("fa-solid fa-signal-bars")),
                           
-                             # Dynamic valueBoxes
-                             valueBoxOutput("progressBox", width = 4),
-                             valueBoxOutput("approvalBox", width = 4),
-                             valueBox(4885, a(href = "https://www12.statcan.gc.ca/census-recensement/2021/dp-pd/dv-vd/imm/index-fr.cfm", "Statistique Canada, Recensement de la population, 2021."), width = 4,color = "yellow",,icon = icon("glist-alt"))
-                       ),
+                                                       # Dynamic valueBoxes
+                                                       valueBoxOutput("progressBox", width = 4),
+                                                       valueBoxOutput("approvalBox", width = 4),
+                                                       valueBox(4885, a(href = "https://www12.statcan.gc.ca/census-recensement/2021/dp-pd/dv-vd/imm/index-fr.cfm", "Statistique Canada, Recensement de la population, 2021."), width = 4,color = "red",,icon = icon("glist-alt"))
+                                                   ),
         
-                  p("Le tableau de bord a été mis à jour pour la dernière fois le 24-04-2025 "),
-               a(href = "https://ctcanada.org/", "Pour plus d'informations sur la CTC")
+                                         p("Le tableau de bord a été mis à jour pour la dernière fois le 24-04-2025 "),
+                                         a(href = "https://ctcanada.org/", "Pour plus d'informations sur la CTC")
         
         
-         ),
+                                     ),
       
       
-        # third tab content
-        tabItem(
+                # third tab content
+                        tabItem(
         
+                                      tabName = "dashboardsection",
+                                      h2("À venir ...")
         
-                  tabName = "dashboardsection",
-                         h2("À venir ...")
-        
-        
-              ),
+                               ),
       
-      # third tab content
-      tabItem(
-        tabName = "test_FILTRE",
-        fluidRow(
-          box(
-            title = t("Filtre"),
-            status = "primary",
-            solidHeader = TRUE,
-            width = 3,
+               # third tab content
+                       tabItem(
+                                   tabName = "test_FILTRE",
+                                   fluidRow(
+                                     
+                                              box( 
+                                                      title = t("Filtre"),
+                                                      status = "primary",
+                                                      solidHeader = TRUE,
+                                                       width = 3,
             
-            # Filter by Section
-            pickerInput(inputId = "AllSection",
-                        label = t("Selectionner une section"),
-                        choices =  sort(unique(TrendAdhesion$section)),
-                        selected = first(sort(TrendAdhesion$section)),
-                        multiple = FALSE),
+                                                       # Filter by Section
+                                                      pickerInput(   inputId = "AllSection",
+                                                                     label = t("Selectionner une section"),
+                                                                      choices =  sort(unique(TrendAdhesion$section)),
+                                                                      selected = first(sort(TrendAdhesion$section)),
+                                                                      multiple = FALSE
+                                                                  ),
             
-            # Date range slider (THE OUTPUT WILL be call dat - this will contain each min/max that user will chose and use below in servser side for filtration)
-            dateRangeInput(inputId = "DateRangeSelected",
-                           label = t("Selectionner un intervalle de temps"),
-                           start = min(TrendAdhesion$AdhésionDébut, na.rm = TRUE),
-                           end =   max(TrendAdhesion$AdhésionDébut, na.rm = TRUE),
-                           min =   min(TrendAdhesion$AdhésionDébut, na.rm = TRUE),
-                           max =   max(TrendAdhesion$AdhésionDébut, na.rm = TRUE),
-                           separator = t("à"))
+                                                        # Date range slider (THE OUTPUT WILL be call dat - this will contain each min/max that user will chose and use below in servser side for filtration)
+                                                       dateRangeInput(   inputId = "DateRangeSelected",
+                                                                         label = t("Selectionner un intervalle de temps"),
+                                                                          start = min(TrendAdhesion$AdhésionDébut, na.rm = TRUE),
+                                                                          end =   max(TrendAdhesion$AdhésionDébut, na.rm = TRUE),
+                                                                           min =   min(TrendAdhesion$AdhésionDébut, na.rm = TRUE),
+                                                                           max =   max(TrendAdhesion$AdhésionDébut, na.rm = TRUE),
+                                                                           separator = t("à")
+                                                                      )
             
-          )# column
+                                                )# column
           ,
-          box(
-            width = 10,
-            fluidRow(
-              column(
-                width = 12, 
-                plotOutput(outputId = "plot4", 
-                           height = "500px"))
-            )
-          ) # column  box(plotOutput("plot3", height = 150)) ,
-        )
+                                           box(
+                                                  width = 10,
+                                                  fluidRow(
+                                                             column(
+                                                                      width = 12, 
+                                                                      plotOutput(outputId = "plot4",  height = "500px")
+                                                                )#End of column
+                                                        )  #end of the fluidRow
+                                              ) #end of the box ,
+          
+                                       )#end of fluidRow
         
         
-      ) # fluidRow
+                             ) # end of tabItem
       
       
-    )  
-  )
+          ) # end of tabItems 
+    ) # end of dashboardBody
   
   
   
