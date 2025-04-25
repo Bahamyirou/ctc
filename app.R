@@ -11,7 +11,7 @@ library(tidyverse)
 library(shinyWidgets)
 
 ## Load the data
-load("datactc1.RData")
+load("datactc.RData")
 
 ####  BEGINING OF THE SHINY 
 
@@ -47,14 +47,32 @@ ui <- dashboardPage(
               
                                          fluidRow(
                 
-                                                #box1
-                                                box(plotOutput("plot1", height = 250),width = 4),
-                
                                                 #box2
-                                                box(plotOutput("plot2", height = 250),width = 4) ,
+                                                box(plotOutput("plot2"),width = 4) ,
                 
                                                 #box3
-                                                box(plotOutput("plot3", height = 250),width = 4) ,
+                                                box(plotOutput("plot3"),width = 4) ,
+                                                
+                                                #box5
+                                                box(plotOutput("plot5"),width = 4) ,
+                                                
+                                                #box6
+                                                box(plotOutput("plot6"),width = 4) ,
+                                                
+                                                #box7
+                                                box(plotOutput("plot7"),width = 4) ,
+                                                
+                                                #box8
+                                                box(plotOutput("plot8"),width = 4) ,
+                                                
+                                                #box9
+                                                box(plotOutput("plot9"),width = 4) ,
+                                                
+                                                
+                                                
+                                                #box1
+                                                box(plotOutput("plot1"),width = 4),
+                                                
                 
                                                 #box4
                                                 box(
@@ -201,61 +219,92 @@ server <- function(input, output) {
   
 
   
-  # first data input
-  set.seed(122)
-  histdata <- rnorm(500)
+                          # first data input
+                           set.seed(122)
+                           histdata <- rnorm(500)
   
-  output$plot1 <- renderPlot({
+                           output$plot1 <- renderPlot({
     
-                                 data <- histdata[seq_len(input$slider)]
-                                  hist(data)
-                             })
+                                                          data <- histdata[seq_len(input$slider)]
+                                                          hist(data)
+                                                      })
+
   
-  # ctc input (All data)
-  
-  #data <- read_excel('Membres.xlsx')
-  #sub <- read.csv('sub.csv')
-  #Load the data files
- 
-  
-  
-           output$plot2 <- renderPlot({
-                                            ggplot(data = sub, aes(x = MembreProvince, fill = MembreStatut)) +
-                                             geom_bar(position = "dodge")
-                                     })
+                            output$plot2 <- renderPlot({
+                           
+                                                       ggplot(data = sub, aes(x = MembreProvince, fill = MembreStatut)) +
+                                                        geom_bar(position = "dodge")
+                                                    })
   
   
-  # ctc input (df contains the frequency of observations based on section)
+              # ctc input (df contains the frequency of observations based on section)
   
-           #df <- read.csv('df.csv')
+      
   
-             output$plot3 <- renderPlot({
-                                          sub %>% ggplot(aes(x = section)) +
-                                           geom_bar(position = "dodge")
-                                        })
+                        output$plot3 <- renderPlot({
+                                          
+                                                      sub %>% ggplot(aes(x = section)) +
+                                                      geom_bar(position = "dodge")
+                                                   })
   
-  # section qui tient compte du Nb membres actifs
+                # section qui tient compte du Nb membres actifs
              
   
             
-  output$plot4 <- renderPlot({
+                       output$plot4 <- renderPlot({
     
-                             #Create the data (filter data based on the select date range that user will chose)
-                                datAdhesion_subset <- TrendAdhesion %>% dplyr::filter(section %in% input$AllSection,
-                                                                                      between(AdhésionDébut, 
-                                                                                            input$DateRangeSelected[1], 
-                                                                                             input$DateRangeSelected[2]) )
+                                                      #Create the data (filter data based on the select date range that user will chose)
+                                                      datAdhesion_subset <- TrendAdhesion %>% dplyr::filter(section %in% input$AllSection,
+                                                                                                                        between(AdhésionDébut, 
+                                                                                                                                 input$DateRangeSelected[1], 
+                                                                                                                                 input$DateRangeSelected[2]
+                                                                                                                                ) 
+                                                                                                            )
     
-                                 histo <- datAdhesion_subset %>% ggplot(
-                                                                        aes(x = AdhésionDébut, y = cum)) +
-                                                                         ylab("Nombre de membres actifs") +
-                                                                         xlab("Date de l'adhésion") +
-                                                                          geom_line()
+                                                     histo <- datAdhesion_subset %>% ggplot( aes(x = AdhésionDébut, y = cum)) +
+                                                                                              ylab("Nombre de membres actifs") +
+                                                                                              xlab("Date de l'adhésion") +
+                                                                                               geom_line()
           
-                                  histo
+                                                     histo
   
-                              })#END NB actifs
-  
+                                                  })#END NB actifs
+                       
+                       ### Distribution des types de membres
+                       output$plot5 <- renderPlot({
+                         
+                                                      ggplot(data = subNew, aes(x = Type, y = Proportion)) + geom_bar(stat = "identity")
+                                                  })
+                       
+                       
+                       ### Statut des membres selon le type
+                       output$plot6 <- renderPlot({
+                         
+                                                      ggplot(data = sub, aes(x = Type, fill = MembreStatut)) + geom_bar(position = "dodge")
+                                                 })
+                       
+                       
+                       ### Type des membres selon la section
+                       output$plot7 <- renderPlot({
+                         
+                                                      ggplot(data = sub, aes(x = section, fill = Type)) + geom_bar(position = "dodge")
+                         
+                                                  })
+                        
+                       ### Section selon la type de membre
+                       output$plot8 <- renderPlot({
+                         
+                                                   ggplot(data = sub, aes(x = Type, fill = section)) + geom_bar(position = "dodge")
+                         
+                                                  })
+                       
+                       ### Type selon la province
+                       output$plot9 <- renderPlot({
+                         
+                                                     ggplot(data = sub, aes(x = MembreProvince, fill = Type)) + geom_bar(position = "dodge")
+                         
+                                                  })
+              
   
   #progressBox
   output$progressBox <- renderValueBox({
