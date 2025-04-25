@@ -48,8 +48,36 @@ subdata  =  subdata %>% dplyr::mutate(
 
 subdata$section <- ifelse(is.na(subdata$section), 'Missing', subdata$section) 
 
-sub  =  subdata %>% dplyr::select(MembreProvince,MembreStatut,section)
+subdata  =  subdata %>% dplyr::mutate(
+                                         Type= ifelse(substr(AdhésionType,1,5)=='Ainés', 'Ainés',
+                                                      
+                                                        ifelse(substr(AdhésionType,1,9)=='Étudiants', 'Étudiants',
+                                                               
+                                                               ifelse(substr(AdhésionType,1,7)=='Famille', 'Famille',
+                                                                      
+                                                                       ifelse(substr(AdhésionType,1,14)=='Professionnels', 'Professionnels', AdhésionType)
+                                                                     )
+                                                               
+                                                             )
+                                                      ) 
+                                      )
 
+sub  =  subdata %>% dplyr::select(MembreProvince,MembreStatut,section,Type)
+
+#ggplot(data = sub, aes(x = Type, fill = MembreStatut)) + geom_bar(position = "dodge")
+
+#ggplot(data = sub, aes(x = Type, fill = section)) + geom_bar(position = "dodge")
+
+#ggplot(data = sub, aes(x = section, fill = Type)) + geom_bar(position = "dodge")
+
+#ggplot(data = sub, aes(x = MembreProvince, fill = Type)) + geom_bar(position = "dodge")
+
+
+subNew <- sub %>% group_by(Type) %>%
+  summarize(count = n()) %>% # count records by species
+  mutate(Proportion = count/sum(count)) # find percent of total
+
+ggplot(data = subNew, aes(x = Type, y = Proportion)) + geom_bar(stat = "identity")
 
 
 
@@ -73,13 +101,15 @@ datAdhesiongrp  <- as.data.frame(datAdhesiongrp)
 
 
 TrendAdhesion  <- rbind(datAdhesionCTC,datAdhesiongrp)
-write.csv(TrendAdhesion, "C:/ctc/TrendAdhesion.csv", row.names = FALSE, na='')
+
+
+
 
 # Save multiple objects
-save(sub, TrendAdhesion, file = "datactc1.RData")
+save(sub, TrendAdhesion,subNew, file = "datactc.RData")
 
 
 
-
+write.csv(TrendAdhesion, "C:/ctc/TrendAdhesion.csv", row.names = FALSE, na='')
 
 write.csv(datAdhesion, "C:/ctc/datAdhesion.csv", row.names = FALSE, na='')
