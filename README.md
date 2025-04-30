@@ -29,5 +29,5 @@ CTC-Shiny-App/
 ## 🛠️ Where it is published
 
 ```bash
-xxxxx
+the app is hosted in https://www.shinyapps.io/. The app link is the following:
 ```
