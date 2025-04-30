@@ -2,14 +2,14 @@
 
 # <img src="img/logo4.jpg" align="right" alt="" width="200"/> 
 
-A RShiny-based dashboard for monitoring, analyzing the data from xxx
+A RShiny-based dashboard for monitoring, analyzing the data of CTC
 
 ## 🚀 Features
 
-- 🚰 View xxxx
-- 🦠 View xxxx
-- 🆕 View xxxxx
-- ⚠️ View recorded measures with unusually large jumps in values 
+- 📊 View distribution of Togolese community in Canada
+- 📈 View memebership Trend
+- 📊 View section specific need
+
 
 ## 🏗️ Architecture
 
@@ -29,5 +29,5 @@ CTC-Shiny-App/
 ## 🛠️ Where it is published
 
 ```bash
-xxxxx
+the app is hosted in https://www.shinyapps.io/. The app link is the following:
 ```
