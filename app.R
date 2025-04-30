@@ -138,7 +138,7 @@ ui <- dashboardPage(
                                                        # Dynamic valueBoxes
                                                        valueBoxOutput("progressBox", width = 4),
                                                        valueBoxOutput("approvalBox", width = 4),
-                                                       valueBox(4885, a(href = "https://www12.statcan.gc.ca/census-recensement/2021/dp-pd/dv-vd/imm/index-fr.cfm", "Statistique Canada, Recensement de la population, 2021."), width = 4,color = "red",,icon = icon("glist-alt"))
+                                                       valueBox(4885, a(href = "https://www12.statcan.gc.ca/census-recensement/2021/dp-pd/dv-vd/imm/index-fr.cfm", "Statistique Canada, Recensement de la population, 2021."), width = 4,color = "green",,icon = icon("glist-alt"))
                                                    ),
         
                                          p("Le tableau de bord a été mis à jour pour la dernière fois le 24-04-2025 "),
