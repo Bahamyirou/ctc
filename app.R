@@ -127,7 +127,7 @@ ui <- dashboardPage(
       
         
         
-                                         #This is where The statistics are derived for About PAGE
+                                         #This is where The statistics are derived for About PAGE.
         
                                          fluidRow(
                                                        #infoBox("New Orders", 10 * 2, icon = icon("credit-card"), fill = TRUE),
