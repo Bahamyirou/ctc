@@ -27,10 +27,11 @@ ui <- dashboardPage(
          dashboardSidebar(
     
                      sidebarMenu(
-                                      menuItem("À propos", tabName = "widgets", icon = icon("file-lines")), # 2nd tab
-                                      menuItem("La CTC", tabName = "dashboard", icon = icon("chart-line")), # first tab
-                                      menuItem("Les sections", tabName = "dashboardsection", icon = icon("chart-line")), # first tab
-                                      menuItem("Les sections 2", tabName = "test_FILTRE", icon = icon("chart-line")) # first tab
+                                      menuItem("À propos", tabName = "widgets", icon = icon("file-lines")), # first  tab
+                                      menuItem("La CTC", tabName = "dashboard", icon = icon("chart-line")), # 2nd tab
+                                      menuItem("Les adhésions", tabName = "test_FILTRE", icon = icon("chart-line")), # 3rd tab
+                                      menuItem("Les sections", tabName = "dashboardsection", icon = icon("chart-line")) # 4 th tab
+                                      
                                  )
     
                           ),
@@ -48,30 +49,28 @@ ui <- dashboardPage(
                                          fluidRow(
                 
                                                 #box2
-                                                box(plotOutput("plot2"),width = 4) ,
+                                                box(plotOutput("plot2"),width = 4, status = "primary",background = 'green') ,
                 
                                                 #box3
-                                                box(plotOutput("plot3"),width = 4) ,
+                                                box(plotOutput("plot3"),width = 4, status = "success",background = 'yellow') ,
                                                 
                                                 #box5
-                                                box(plotOutput("plot5"),width = 4) ,
+                                                box(plotOutput("plot5"),width = 4, status = "info",background = 'purple') ,
                                                 
                                                 #box6
-                                                box(plotOutput("plot6"),width = 4) ,
+                                                box(plotOutput("plot6"),width = 4, status = "warning") ,
                                                 
                                                 #box7
-                                                box(plotOutput("plot7"),width = 4) ,
+                                                box(plotOutput("plot7"),width = 4, status = "danger") ,
                                                 
                                                 #box8
-                                                box(plotOutput("plot8"),width = 4) ,
+                                                box(plotOutput("plot8"),width = 4, status = "danger") ,
                                                 
                                                 #box9
-                                                box(plotOutput("plot9"),width = 4) ,
-                                                
-                                                
+                                                box(plotOutput("plot9"),width = 4, status = "danger",background = 'aqua') ,
                                                 
                                                 #box1
-                                                box(plotOutput("plot1"),width = 4),
+                                                box(plotOutput("plot1"),width = 4, status = "danger"),
                                                 
                 
                                                 #box4
@@ -152,7 +151,7 @@ ui <- dashboardPage(
                         tabItem(
         
                                       tabName = "dashboardsection",
-                                      h2("À venir ...")
+                                      h2("Développement À venir ...")
         
                                ),
       
@@ -163,10 +162,10 @@ ui <- dashboardPage(
                                      
                                               box( 
                                                       title = t("Filtre"),
-                                                      status = "primary",
+                                                      status = "success",
                                                       solidHeader = TRUE,
-                                                       width = 3,
-            
+                                                      width = 3, collapsible=TRUE,collapsed=TRUE,
+                     
                                                        # Filter by Section
                                                       pickerInput(   inputId = "AllSection",
                                                                      label = t("Selectionner une section"),
