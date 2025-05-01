@@ -49,28 +49,28 @@ ui <- dashboardPage(
                                          fluidRow(
                 
                                                 #box2
-                                                box(plotOutput("plot2"),width = 4, status = "primary",background = 'green') ,
+                                                box(plotOutput("plot2"),width = 4, status = "primary") ,
                 
                                                 #box3
-                                                box(plotOutput("plot3"),width = 4, status = "success",background = 'yellow') ,
+                                                box(plotOutput("plot3"),width = 4, status = "primary") ,
                                                 
                                                 #box5
-                                                box(plotOutput("plot5"),width = 4, status = "info",background = 'purple') ,
+                                                box(plotOutput("plot5"),width = 4, status = "primary") ,
                                                 
                                                 #box6
-                                                box(plotOutput("plot6"),width = 4, status = "warning") ,
+                                                box(plotOutput("plot6"),width = 4, status = "info") ,
                                                 
                                                 #box7
-                                                box(plotOutput("plot7"),width = 4, status = "danger") ,
+                                                box(plotOutput("plot7"),width = 4, status = "info") ,
                                                 
                                                 #box8
-                                                box(plotOutput("plot8"),width = 4, status = "danger") ,
+                                                box(plotOutput("plot8"),width = 4, status = "info") ,
                                                 
                                                 #box9
-                                                box(plotOutput("plot9"),width = 4, status = "danger",background = 'aqua') ,
+                                                box(plotOutput("plot9"),width = 4, status = "warning") ,
                                                 
                                                 #box1
-                                                box(plotOutput("plot1"),width = 4, status = "danger"),
+                                                box(plotOutput("plot1"),width = 4, status = "warning"),
                                                 
                 
                                                 #box4
@@ -106,9 +106,9 @@ ui <- dashboardPage(
                                          h1("Communauté Togolaise Au Canada (CTC)"),
         
         
-                                         h2("La CTC est un organisme à  but non lucratif qui représente les Togolais vivant au Canada. Depuis 32 ans, 
-                                             notre mission est de favoriser la solidarité entre la diaspora togolaise, de promouvoir la culture togolaise 
-                                             et d’intervenir sur les questions cruciales concernant notre pays d’origine, le Togo."),
+                                         # h2("La CTC est un organisme à  but non lucratif qui représente les Togolais vivant au Canada. Depuis 32 ans, 
+                                         #    notre mission est de favoriser la solidarité entre la diaspora togolaise, de promouvoir la culture togolaise 
+                                         #   et d’intervenir sur les questions cruciales concernant notre pays d’origine, le Togo."),
                   
                                          h2("Ce tableau de bord fournit des statistiques sur les membres de la CTC, permet de visualiser la tendance 
                                             des adhésions dans le temps et comprendre la composition de notre communauté afin de mieux la servir."),
@@ -139,9 +139,14 @@ ui <- dashboardPage(
                                                        valueBoxOutput("approvalBox", width = 4),
                                                        valueBox(4885, a(href = "https://www12.statcan.gc.ca/census-recensement/2021/dp-pd/dv-vd/imm/index-fr.cfm", "Statistique Canada, Recensement de la population, 2021."), width = 4,color = "green",,icon = icon("glist-alt"))
                                                    ),
-        
-                                         p("Le tableau de bord a été mis à jour pour la dernière fois le 24-04-2025 "),
+                                         p("Le tableau de bord a été mis à jour pour la dernière fois le 01-05-2025 "),
+                                         p(""),
+                                         a(href = "https://github.com/Bahamyirou/ctc", "Voulez-vous contribuer a StatCTC, Merci de visiter la page GitHub de la CTC ou de contacter communications@ctcanada.org."),
+                                         p(""),
                                          a(href = "https://ctcanada.org/", "Pour plus d'informations sur la CTC")
+                                         
+  
+
         
         
                                      ),
