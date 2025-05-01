@@ -151,7 +151,7 @@ ui <- dashboardPage(
                         tabItem(
         
                                       tabName = "dashboardsection",
-                                      h2("À venir ...")
+                                      h2("Développement À venir ...")
         
                                ),
       
