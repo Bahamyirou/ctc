@@ -103,17 +103,16 @@ ui <- dashboardPage(
         
                                          tabName = "widgets",
         
-                                         h1("Communauté Togolaise Au Canada (CTC)"),
+                                         #h1("Communauté Togolaise Au Canada (CTC)"),
         
         
                                          # h2("La CTC est un organisme à  but non lucratif qui représente les Togolais vivant au Canada. Depuis 32 ans, 
                                          #    notre mission est de favoriser la solidarité entre la diaspora togolaise, de promouvoir la culture togolaise 
                                          #   et d’intervenir sur les questions cruciales concernant notre pays d’origine, le Togo."),
                   
-                                         h2("Ce tableau de bord fournit des statistiques sur les membres de la CTC, permet de visualiser la tendance 
-                                            des adhésions dans le temps et comprendre la composition de notre communauté afin de mieux la servir."),
-        
-      
+                                         h2("Ce tableau de bord présente des statistiques sur les membres de la Communauté Togolaise au Canada (CTC). Il permet de visualiser l'évolution des adhésions dans le temps et de mieux comprendre la composition de notre communauté, afin de mieux répondre à ses besoins."),
+                                         h1(""),
+                                         h1(""),
         
                                          p(tags$ul(  tags$li(tags$b(t("NOTRE MISSION:")),t("Servir la communauté togolaise au Canada tout en promouvant l’intégration et l’échange de richesses culturelles.")),
                                                      tags$li(tags$b(t("NOTRE VISION:")),t("Contribuer au bien-être des personnes originaires du Togo au Canada et à l’essor socio-économique du Canada.")),
@@ -122,8 +121,10 @@ ui <- dashboardPage(
                                                     )
                                             ),
        
-        
-      
+                                         h1(""),
+                                         h1(""),
+                                         h1(""),
+                                         h1(""),
         
         
                                          #This is where The statistics are derived for About PAGE.
@@ -137,15 +138,27 @@ ui <- dashboardPage(
                                                        # Dynamic valueBoxes
                                                        valueBoxOutput("progressBox", width = 4),
                                                        valueBoxOutput("approvalBox", width = 4),
-                                                       valueBox(4885, a(href = "https://www12.statcan.gc.ca/census-recensement/2021/dp-pd/dv-vd/imm/index-fr.cfm", "Statistique Canada, Recensement de la population, 2021."), width = 4,color = "green",,icon = icon("glist-alt"))
+                                                       valueBox(4885, a(href = "https://www12.statcan.gc.ca/census-recensement/2021/dp-pd/dv-vd/imm/index-fr.cfm", "Statistique Canada, Recensement de la population, 2021."), width = 4,color = "teal",icon = icon("fa-regular fa-user"))
                                                    ),
                                          p("Le tableau de bord a été mis à jour pour la dernière fois le 01-05-2025 "),
                                          p(""),
-                                         a(href = "https://github.com/Bahamyirou/ctc", "Voulez-vous contribuer a StatCTC, Merci de visiter la page GitHub de la CTC ou de contacter communications@ctcanada.org."),
+                                         #a(href = "https://github.com/Bahamyirou/ctc", "Voulez-vous contribuer à StatCTC, Merci de visiter la page GitHub de la CTC ou de contacter communications@ctcanada.org."),
                                          p(""),
-                                         a(href = "https://ctcanada.org/", "Pour plus d'informations sur la CTC")
+                                         #a(href = "https://ctcanada.org/", "Pour plus d'informations sur la CTC"),
+                                         p(""),
+                                         #a(href = "https://hctogocanada.org/", "Pour plus d'informations sur le Haut Commissariat du Togo au Canada (HCTC)."),
                                          
-  
+                                         
+                                         p(t("Voulez-vous contribuer à StatCTC, merci de visiter la page"),
+                                           a(href = "https://ctcanada.org/", "GitHub"),
+                                           t(" de la CTC ou contactez par courriel à \"communications@ctcanada.org\"."),
+                                           t(" Reférez-vous à ce"),
+                                           a(href = "https://ctcanada.org/", "lien"),
+                                            t("pour plus d'informations sur la CTC."),
+                                           t(" Reférez-vous à ce"),
+                                           a(href = "https://hctogocanada.org/", "lien"),
+                                           t("pour plus d'informations sur le Haut Commissariat du Togo au Canada (HCTC).")
+                                           )
 
         
         
@@ -266,9 +279,11 @@ server <- function(input, output) {
                                                                                                             )
     
                                                      histo <- datAdhesion_subset %>% ggplot( aes(x = AdhésionDébut, y = cum)) +
-                                                                                              ylab("Nombre de membres actifs") +
-                                                                                              xlab("Date de l'adhésion") +
-                                                                                               geom_line()
+                                                       ylab("Nombre de membres actifs") +
+                                                       xlab("Date de l'adhésion") +
+                                                       geom_area(fill = rgb(0, 0.5, 1, alpha = 0.5))+ 
+                                                       ggtitle("Nombre des adhésions en fonction du temps")+ 
+                                                       theme(plot.title = element_text(size = 30)) 
           
                                                      histo
   
