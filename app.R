@@ -149,9 +149,9 @@ ui <- dashboardPage(
                                          #a(href = "https://hctogocanada.org/", "Pour plus d'informations sur le Haut Commissariat du Togo au Canada (HCTC)."),
                                          
                                          
-                                         p(t("Voulez-vous contribuer à StatCTC, merci de visiter la page"),
-                                           a(href = "https://ctcanada.org/", "GitHub"),
-                                           t(" de la CTC ou contactez par courriel à \"communications@ctcanada.org\"."),
+                                         p(t("Vous voulez contribuer à StatCTC ? merci de visiter la page"),
+                                           a(href = "https://github.com/Bahamyirou/ctc", "GitHub"),
+                                           t(" de la CTC ou contactez nous par courriel à \"communications@ctcanada.org\"."),
                                            t(" Reférez-vous à ce"),
                                            a(href = "https://ctcanada.org/", "lien"),
                                             t("pour plus d'informations sur la CTC."),
