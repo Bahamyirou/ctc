@@ -3,7 +3,7 @@
 # <img src="img/logo4.jpg" align="right" alt="" width="200"/> 
 
 A RShiny-based dashboard for monitoring, analyzing the data of CTC
-
+[![CTC]](https://ctcanada.org/)
 ## 🚀 Features
 
 - 📊 View distribution of Togolese community in Canada
