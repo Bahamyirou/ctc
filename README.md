@@ -4,11 +4,13 @@
 
 A RShiny-based dashboard for monitoring, analyzing the data of [the Togolese community in Canada](https://ctcanada.org/).
 
+
 ## 🚀 Features
 
 - 📊 View distribution of Togolese community in Canada
-- 📈 View memebership Trend
+- 📈 View membership Trend
 - 📊 View section specific need
+
 
 
 ## 🏗️ Architecture
