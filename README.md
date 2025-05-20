@@ -2,7 +2,7 @@
 
 # <img src="img/logo4.jpg" align="right" alt="" width="200"/> 
 
-A RShiny-based dashboard for monitoring, analyzing the data of CTC
+A RShiny-based dashboard for monitoring, analyzing the data of [the Togolese community in Canada](https://ctcanada.org/).
 
 ## 🚀 Features
 
@@ -15,15 +15,14 @@ A RShiny-based dashboard for monitoring, analyzing the data of CTC
 
 ```
 CTC-Shiny-App/
-├── app.py                    # Main application entry
-├── views/                    # Page components
-│   ├── large-jumps.py        # Handles the "Large Jumps" page
-│   ├── latest-measures.py    # Handles the "Latest Measures" page
-│   ├── mpox.py               # Handles the "Mpox Trends" page
-│   ├── ww-trends.py          # Handles the "Wastewater Trends" page
-├── utils.py                  # Shared util functions
-├── .env                      # Environment configuration
-└── requirements.txt          # Dependencies
+├── app.R                     # Main application code
+├── views/                  
+│   ├── A propos              # About page - explain what the dashboard is about
+│   ├── La CTC                # Provides few statistics descriptive about the Togolese community
+│   ├── Les adhesions         # Provides membership trend through the years
+│   ├── Les sections          # Work in progress
+├── datactc.RData             # RData files uses to display the dashbord
+
 ```
 
 ## 🛠️ Where it is published
