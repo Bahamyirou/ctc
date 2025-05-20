@@ -19,7 +19,7 @@ CTC-Shiny-App/
 ├── views/                  
 │   ├── A propos              # About page - explain what the dashboard is about
 │   ├── La CTC                # Provides few statistics descriptive about the Togolese community
-│   ├── Les adhesions         # Provide membership trend through the years
+│   ├── Les adhesions         # Provides membership trend through the years
 │   ├── Les sections          # Work in progress
 ├── datactc.RData             # RData files uses to display the dashbord
 
