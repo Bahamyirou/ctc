@@ -9,9 +9,13 @@ library(ggplot2)
 library(readxl)
 library(tidyverse)
 library(shinyWidgets)
+library(jsonlite, include.only = "fromJSON")
+library(htmltools)
 
 ## Load the data
 load("datactc.RData")
+
+webcode = fromJSON("webcode.json")
 
 ####  BEGINING OF THE SHINY 
 
@@ -27,7 +31,8 @@ ui <- dashboardPage(
          dashboardSidebar(
     
                      sidebarMenu(
-                                      menuItem("À propos", tabName = "widgets", icon = icon("file-lines")), # first  tab
+                                      menuItem("About StatCTC", tabName = "ctclogo", icon = icon("chart-line")), # 4 th tab
+                                      #menuItem("À propos", tabName = "widgets", icon = icon("file-lines")), # first  tab
                                       menuItem("La CTC", tabName = "dashboard", icon = icon("chart-line")), # 2nd tab
                                       menuItem("Les adhésions", tabName = "test_FILTRE", icon = icon("chart-line")), # 3rd tab
                                       menuItem("Les sections", tabName = "dashboardsection", icon = icon("chart-line")) # 4 th tab
@@ -129,13 +134,7 @@ ui <- dashboardPage(
         
                                          #This is where The statistics are derived for About PAGE.
         
-                                         fluidRow(
-                                                       #infoBox("New Orders", 10 * 2, icon = icon("credit-card"), fill = TRUE),
-                                                       #infoBoxOutput("progressBox"),
-                                                       #infoBoxOutput("approvalBox2")
-                                                       # valueBox(10 * 2, "Membres Actifs", width = 3,color = "green",icon = icon("fa-solid fa-signal-bars")),
-                          
-                                                       # Dynamic valueBoxes
+                                         fluidRow( # Dynamic valueBoxes
                                                        valueBoxOutput("progressBox", width = 4),
                                                        valueBoxOutput("approvalBox", width = 4),
                                                        valueBox(4885, a(href = "https://www12.statcan.gc.ca/census-recensement/2021/dp-pd/dv-vd/imm/index-fr.cfm", "Statistique Canada, Recensement de la population, 2021."), width = 4,color = "teal",icon = icon("fa-regular fa-user"))
@@ -217,7 +216,45 @@ ui <- dashboardPage(
                                        )#end of fluidRow
         
         
-                             ) # end of tabItem
+                             ), # end of tabItem
+           
+          tabItem(
+            
+            
+                   tabName = "ctclogo",
+                   h2("Ce tableau de bord présente des statistiques sur les membres de la Communauté Togolaise au Canada (CTC) et éclaire sur la composition de notre communauté pour mieux répondre à ses besoins."),
+            
+                   fluidRow(
+                                  column(width = 10, offset = 1, htmlOutput(outputId = "logoCTC"))
+                           ),
+                   #This is where The statistics are derived for About PAGE.
+                   
+                   fluidRow( # Dynamic valueBoxes
+                     valueBoxOutput("progressBox", width = 4),
+                     valueBoxOutput("approvalBox", width = 4),
+                     valueBox(4885, a(href = "https://www12.statcan.gc.ca/census-recensement/2021/dp-pd/dv-vd/imm/index-fr.cfm", "Statistique Canada, Recensement de la population, 2021."), width = 4,color = "teal",icon = icon("fa-regular fa-user"))
+                   ),
+                   p("Le tableau de bord a été mis à jour pour la dernière fois le 01-05-2025 "),
+                   p(""),
+                   #a(href = "https://github.com/Bahamyirou/ctc", "Voulez-vous contribuer à StatCTC, Merci de visiter la page GitHub de la CTC ou de contacter communications@ctcanada.org."),
+                   p(""),
+                   #a(href = "https://ctcanada.org/", "Pour plus d'informations sur la CTC"),
+                   p(""),
+                   #a(href = "https://hctogocanada.org/", "Pour plus d'informations sur le Haut Commissariat du Togo au Canada (HCTC)."),
+                   
+                   
+                   p(t("Vous voulez contribuer à StatCTC ? merci de visiter la page"),
+                     a(href = "https://github.com/Bahamyirou/ctc", "GitHub"),
+                     t(" de la CTC ou contactez nous par courriel à \"communications@ctcanada.org\"."),
+                     t(" Reférez-vous à ce"),
+                     a(href = "https://ctcanada.org/", "lien"),
+                     t("pour plus d'informations sur la CTC."),
+                     t(" Reférez-vous à ce"),
+                     a(href = "https://hctogocanada.org/", "lien"),
+                     t("pour plus d'informations sur le Haut Commissariat du Togo au Canada (HCTC).")
+                   )
+                  )
+          
       
       
           ) # end of tabItems 
@@ -323,7 +360,13 @@ server <- function(input, output) {
                                                      ggplot(data = sub, aes(x = MembreProvince, fill = Type)) + geom_bar(position = "dodge")
                          
                                                   })
-              
+                       
+                       # TODO: convert to plotly figure
+                       #output$timeline <- renderUI({
+                       #  tags$img(src = "timeline-jobs.png",
+                       #           style = getWebCode("JPGStyle"))
+                       #})
+                      
   
   #progressBox
   output$progressBox <- renderValueBox({
@@ -341,6 +384,18 @@ server <- function(input, output) {
       color = "yellow"
     )
   })
+  
+  #################################################
+  ## TAB 9 - About StatCTC
+  #################################################
+
+  # TODO: convert to plotly figure
+  output$logoCTC <- renderUI({
+    tags$img(src = "LOGO.jpg",
+             style = "max-width: 100%; height: auto; display: block; margin: 0 auto;")
+  })
+  
+  
 }
 
 shinyApp(ui, server)
