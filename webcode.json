@@ -1,0 +1,20 @@
+{
+    "/s": "</span>",
+    "b": "<b>",
+    "/b": "</b>",
+    "sep": "<br/>",
+
+
+    "PlotPadding": "<span style='display: inline-block; padding-left: 50px;'>",
+    "TitleSpan": "<span style='font-size: 22px;'>",
+    "30pxMargin": "<div style='margin-bottom: 30px;'>",
+    "FootnoteTextSpan": "<span style='font-size: 16px;'>",
+    "TrendsTitleDiv": "<div style='margin-top: 10px; margin-bottom: 10px; margin-left: 25px'>",
+    "TrendsTitleSpan": "<span style='font-size: 20px;'>",
+    "JPGStyle": "display: block; margin-left: auto; margin-right: auto; width: 100%;",
+    "JPGStyleSmall": "display: block; margin-left: auto; margin-right: auto; width: 50%;",
+    "LegendStyle": "display: block; margin-left: auto; margin-right: auto; width: 40%",
+    "JPGStyle2": "width: 300px; height: auto; display: block; margin: 0 auto;",
+
+    "ExtendedNoteAnimation": "setTimeout(function() { document.getElementById('NAME').scrollIntoView(); }, 300);"
+}
