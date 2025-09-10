@@ -222,11 +222,14 @@ ui <- dashboardPage(
             
             
                    tabName = "ctclogo",
+                   
+                   fluidRow(
+                     column(width = 10, offset = 1, htmlOutput(outputId = "logoCTC"))
+                   ),
+                   
                    h2("Ce tableau de bord présente des statistiques sur les membres de la Communauté Togolaise au Canada (CTC) et éclaire sur la composition de notre communauté pour mieux répondre à ses besoins."),
             
-                   fluidRow(
-                                  column(width = 10, offset = 1, htmlOutput(outputId = "logoCTC"))
-                           ),
+                   
                    #This is where The statistics are derived for About PAGE.
                    
                    fluidRow( # Dynamic valueBoxes
