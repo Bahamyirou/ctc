@@ -31,11 +31,11 @@ ui <- dashboardPage(
          dashboardSidebar(
     
                      sidebarMenu(
-                                      menuItem("About StatCTC", tabName = "ctclogo", icon = icon("chart-line")), # 4 th tab
+                                      menuItem("About StatCTC", tabName = "ctclogo", icon = icon("file-lines")), # 4 th tab
                                       #menuItem("À propos", tabName = "widgets", icon = icon("file-lines")), # first  tab
                                       menuItem("La CTC", tabName = "dashboard", icon = icon("chart-line")), # 2nd tab
-                                      menuItem("Les adhésions", tabName = "test_FILTRE", icon = icon("chart-line")), # 3rd tab
-                                      menuItem("Les sections", tabName = "dashboardsection", icon = icon("chart-line")) # 4 th tab
+                                      menuItem("Les adhésions", tabName = "test_FILTRE", icon = icon("arrow-trend-up")), # 3rd tab
+                                      menuItem("Les sections", tabName = "dashboardsection", icon = icon("chart-area")) # 4 th tab
                                       
                                  )
     
@@ -322,7 +322,7 @@ server <- function(input, output) {
                                                        ylab("Nombre de membres actifs") +
                                                        xlab("Date de l'adhésion") +
                                                        geom_area(fill = rgb(0, 0.5, 1, alpha = 0.5))+ 
-                                                       ggtitle("Nombre des adhésions en fonction du temps")+ 
+                                                       ggtitle("Nombre des adhésions à travers les années")+ 
                                                        theme(plot.title = element_text(size = 30)) 
           
                                                      histo
